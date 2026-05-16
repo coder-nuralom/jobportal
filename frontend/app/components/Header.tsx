@@ -6,7 +6,7 @@ const Header = () => {
   const isAuthenticated = false;
   const user = { fulName: "Alex", role: "employer" };
   return (
-    <header className="py-6 bg-red-300">
+    <header className="py-5 bg-gray-100">
       <div className="container mx-auto px-4 ">
         <div className="flex items-center justify-between">
           <Link href={"/"} className="flex space-x-3">
