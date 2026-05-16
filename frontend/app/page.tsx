@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import Hero from "./components/Hero";
+import Features from "./components/Features";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Features />
     </>
   );
 }

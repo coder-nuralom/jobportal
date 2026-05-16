@@ -7,7 +7,7 @@ const Header = () => {
   const user = { fulName: "Alex", role: "employer" };
   return (
     <header className="py-5 bg-gray-100">
-      <div className="container mx-auto px-4 ">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link href={"/"} className="flex space-x-3">
             <span className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center rounded-md">
