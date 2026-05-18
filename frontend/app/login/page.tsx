@@ -4,10 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader2 } from "lucide-react";
 
-/* =========================
-   Types / Interfaces
-========================= */
-
 // Form data type
 interface FormDataState {
   email: string;
@@ -46,10 +42,6 @@ const Page = () => {
     errors: {},
   });
 
-  /* =========================
-     Handle Input Change
-  ========================= */
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
 
@@ -73,10 +65,6 @@ const Page = () => {
     }
   };
 
-  /* =========================
-     Email Validation
-  ========================= */
-
   const validateEmail = (email: string): string => {
     if (!email.trim()) {
       return "Email is required.";
@@ -91,10 +79,6 @@ const Page = () => {
     return "";
   };
 
-  /* =========================
-     Password Validation
-  ========================= */
-
   const validatePassword = (password: string): string => {
     if (!password.trim()) {
       return "Password is required.";
@@ -106,10 +90,6 @@ const Page = () => {
 
     return "";
   };
-
-  /* =========================
-     Full Form Validation
-  ========================= */
 
   const validateForm = (): boolean => {
     const errors: FormErrors = {
@@ -134,10 +114,6 @@ const Page = () => {
 
     return Object.keys(errors).length === 0;
   };
-
-  /* =========================
-     Form Submit
-  ========================= */
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -177,12 +153,8 @@ const Page = () => {
     }
   };
 
-  /* =========================
-     JSX
-  ========================= */
-
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-10">
+    <div className="bg-gray-50 flex items-center justify-center px-4 py-15">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
         {/* Header */}
         <div className="text-center mb-8">
