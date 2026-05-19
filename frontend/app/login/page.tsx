@@ -2,7 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader2, CheckCircle } from "lucide-react";
+import { validateEmail } from "@/helper/validateEmail";
+import { validatePassword } from "@/helper/validatePassword";
 
 // Form data type
 interface FormDataState {
@@ -63,32 +65,6 @@ const Page = () => {
         },
       }));
     }
-  };
-
-  const validateEmail = (email: string): string => {
-    if (!email.trim()) {
-      return "Email is required.";
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      return "Please enter a valid email address.";
-    }
-
-    return "";
-  };
-
-  const validatePassword = (password: string): string => {
-    if (!password.trim()) {
-      return "Password is required.";
-    }
-
-    if (password.length < 6) {
-      return "Password must be at least 6 characters.";
-    }
-
-    return "";
   };
 
   const validateForm = (): boolean => {
