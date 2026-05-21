@@ -322,7 +322,7 @@ const Page = () => {
                   <span>Upload Photo</span>
                 </label>
 
-                <p className="text-xs text-gray-500 mt-1">JPG, JPEG, or PNG (max 2MB)</p>
+                <p className="text-xs text-gray-500 mt-1">JPG, JPEG, or PNG (max 5MB)</p>
               </div>
             </div>
 

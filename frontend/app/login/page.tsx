@@ -29,15 +29,13 @@ interface FormUiState {
 }
 
 const Page = () => {
-  // User input data
   const [formData, setFormData] = useState<FormDataState>({
     email: "",
     password: "",
     rememberMe: false,
   });
 
-  // UI related states
-  const [formState, setFormState] = useState<FormUiState>({
+  const [formUiState, setFormUiState] = useState<FormUiState>({
     loading: false,
     showPassword: false,
     success: false,
@@ -56,8 +54,8 @@ const Page = () => {
     // Remove error while typing
     const fieldName = name as keyof FormErrors;
 
-    if (formState.errors[fieldName]) {
-      setFormState((prev) => ({
+    if (formUiState.errors[fieldName]) {
+      setFormUiState((prev) => ({
         ...prev,
         errors: {
           ...prev.errors,
@@ -83,7 +81,7 @@ const Page = () => {
     });
 
     // Set errors
-    setFormState((prev) => ({
+    setFormUiState((prev) => ({
       ...prev,
       errors,
     }));
@@ -100,7 +98,7 @@ const Page = () => {
     if (!isValid) return;
 
     // Start loading
-    setFormState((prev) => ({
+    setFormUiState((prev) => ({
       ...prev,
       loading: true,
       errors: {},
@@ -113,13 +111,13 @@ const Page = () => {
       console.log("Form Submitted:", formData);
 
       // Success
-      setFormState((prev) => ({
+      setFormUiState((prev) => ({
         ...prev,
         loading: false,
         success: true,
       }));
     } catch (error: any) {
-      setFormState((prev) => ({
+      setFormUiState((prev) => ({
         ...prev,
         loading: false,
         errors: {
@@ -140,10 +138,10 @@ const Page = () => {
         </div>
 
         {/* Submit Error */}
-        {formState.errors.submit && (
+        {formUiState.errors.submit && (
           <div className="mb-5 rounded-lg bg-red-100 border border-red-300 px-4 py-3 text-red-700 text-sm flex items-center gap-2">
             <AlertCircle className="w-4 h-4" />
-            {formState.errors.submit}
+            {formUiState.errors.submit}
           </div>
         )}
 
@@ -166,15 +164,15 @@ const Page = () => {
                 onChange={handleChange}
                 className={`w-full pl-12 pr-4 py-3 rounded-lg border outline-none transition-all text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500
                   
-                  ${formState.errors.email ? "border-red-500" : "border-gray-300"}
+                  ${formUiState.errors.email ? "border-red-500" : "border-gray-300"}
                 `}
               />
             </div>
 
-            {formState.errors.email && (
+            {formUiState.errors.email && (
               <p className="mt-2 text-sm text-red-500 flex items-center gap-1">
                 <AlertCircle className="w-4 h-4" />
-                {formState.errors.email}
+                {formUiState.errors.email}
               </p>
             )}
           </div>
@@ -187,14 +185,14 @@ const Page = () => {
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
 
               <input
-                type={formState.showPassword ? "text" : "password"}
+                type={formUiState.showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange}
                 className={`w-full pl-12 pr-12 py-3 rounded-lg border outline-none transition-all text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500
                   
-                  ${formState.errors.password ? "border-red-500" : "border-gray-300"}
+                  ${formUiState.errors.password ? "border-red-500" : "border-gray-300"}
                 `}
               />
 
@@ -202,14 +200,14 @@ const Page = () => {
               <button
                 type="button"
                 onClick={() =>
-                  setFormState((prev) => ({
+                  setFormUiState((prev) => ({
                     ...prev,
                     showPassword: !prev.showPassword,
                   }))
                 }
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
               >
-                {formState.showPassword ? (
+                {formUiState.showPassword ? (
                   <Eye className="w-5 h-5" />
                 ) : (
                   <EyeOff className="w-5 h-5" />
@@ -217,10 +215,10 @@ const Page = () => {
               </button>
             </div>
 
-            {formState.errors.password && (
+            {formUiState.errors.password && (
               <p className="mt-2 text-sm text-red-500 flex items-center gap-1">
                 <AlertCircle className="w-4 h-4" />
-                {formState.errors.password}
+                {formUiState.errors.password}
               </p>
             )}
           </div>
@@ -247,10 +245,10 @@ const Page = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={formState.loading}
+            disabled={formUiState.loading}
             className="w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:opacity-95 transition-opacity disabled:opacity-70 flex items-center justify-center gap-2 cursor-pointer"
           >
-            {formState.loading ? (
+            {formUiState.loading ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
                 Signing In...
