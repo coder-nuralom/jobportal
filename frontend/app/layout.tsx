@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
+import { GlobalContextProvider } from "./context/GlobalContext";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${urbanist.variable} h-full antialiased`}>
       <body className="min-h-screen flex flex-col font-urbanist">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <GlobalContextProvider>
+          <main className="flex-1">{children}</main>
+        </GlobalContextProvider>
       </body>
     </html>
   );

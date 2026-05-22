@@ -23,6 +23,7 @@ interface Feature {
 interface NavigationItem {
   id: string;
   name: string;
+  href: string;
   icon: LucideIcon;
 }
 
@@ -91,10 +92,20 @@ export const employerFeatures: Feature[] = [
 ];
 
 export const NAVIGATION_MENU: NavigationItem[] = [
-  { id: "employer-dashboard", name: "Dashboard", icon: LayoutDashboard },
-  { id: "post-job", name: "Post Job", icon: Plus },
-  { id: "manage-jobs", name: "Manage Jobs", icon: Briefcase },
-  { id: "company-profile", name: "Company Profile", icon: Building2 },
+  { id: "overview", name: "Dashboard", href: "/employer-dashboard", icon: LayoutDashboard },
+  { id: "post-job", name: "Post Job", href: "/employer-dashboard/post-job", icon: Plus },
+  {
+    id: "manage-jobs",
+    name: "Manage Jobs",
+    href: "/employer-dashboard/manage-job",
+    icon: Briefcase,
+  },
+  {
+    id: "company-profile",
+    name: "Company Profile",
+    href: "/employer-dashboard/company-profile",
+    icon: Building2,
+  },
 ];
 
 export const CATEGORIES: Category[] = [
